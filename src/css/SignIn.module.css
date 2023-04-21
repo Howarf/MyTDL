@@ -1,17 +1,14 @@
 .main{
-    width: 1080px;
+    width: 480px;
     margin: 0 auto;
     background-color: #fff;
-    min-height: calc(100vh - 64px);
-}
-.signInBox{
     padding: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.signInBox strong{
-    font-size: 36px;
+.title{
+    font-size: 48px;
     font-weight: bolder;
 }
 .inputBox{
@@ -49,6 +46,8 @@
     outline:none;
 }
 .linkBox{
+    position: absolute;
+    bottom: 0px;
 }
 #link{
     margin-bottom: 12px;
@@ -77,5 +76,5 @@
     color: #fff;
 }
 .submitBtn:hover{
-    background-color: #99cccc;
+    background-color: #8bbbbb;
 }
