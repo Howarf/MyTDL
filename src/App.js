@@ -1,25 +1,20 @@
-import { useEffect, useState } from 'react';
+import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import './App.css';
 import SignIn from './component/Signin';
 import Main from './component/main';
+import ToDoList from './component/ToDoList';
 
 function App() {
-  let [darkmode,setDarkmode] = useState(false);
-  let [isLogin,setIsLogin] = useState(false);
-  function DarkMode(){
-    setDarkmode(true);
-    alert('다크모드'+darkmode);
-  }
-  useEffect(() => {
-    if(sessionStorage.getItem('user_ID')){
-      setIsLogin(true);
-    }
-  },[])
   return (
-    <div className="App">
-      <button className="DarkMode" onClick={DarkMode}>다크모드</button>
-      {isLogin ? <Main isLogin = {isLogin}/> : <SignIn/>}
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path='/' element={<SignIn/>}/>
+          <Route path='/main' element={<Main/>}/>
+          <Route path='/ToDoList' element={<ToDoList/>}/>
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

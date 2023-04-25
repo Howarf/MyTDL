@@ -29,3 +29,29 @@
 .button:hover{
     background-color: #92c5c5;
 }
+.linkBox{
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+}
+#link{
+    margin-bottom: 12px;
+    background-color: #fff;
+    color: #8aa1a1;
+    border: 0;
+    text-decoration: none;
+    letter-spacing: -1px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-right: 12px;
+}
+#textPoint{
+    margin-bottom: 12px;
+    color: #8aa1a1;
+    font-size: 13px;
+    font-weight: 700;
+    margin-right: 12px;
+}
+#link:hover{
+    color: #627272;
+}

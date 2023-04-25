@@ -1,0 +1,22 @@
+.docCom{
+    width: 90%;
+    height: 20%;
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin-left: 5%;
+    margin-top: 2%;
+}
+.check{
+    float: left;
+}
+.title{
+    width: 95%;
+    margin-left: 2.5%;
+    margin-bottom: 0;
+}
+.text{
+    width: 98%;
+    height: 65%;
+    margin-top: 1%;
+    margin-left: 1%;
+}

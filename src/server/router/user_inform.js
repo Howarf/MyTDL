@@ -5,9 +5,20 @@ const util = require('util');
 
 db.connect();
 
-router.get('/userdata', (req, res) => {
+router.post('/userdata', (req, res) => {
   console.log(`= = =>req: ${util.inspect(req.query)}`);
+  const user_id = req.query.user_id;
+  const sql1 = 'SELECT name FROM userinfo WHERE id = ?'
+  db.query(sql1, user_id, (err, data) => {
+    if(!err){
+      res.send(data[0]);
+    }
+    else{
+      console.log("!!!데이터를 가져오지 못했습니다.");
+    }
+  })
 });
+
 router.post('/login', (req, res) =>{
   console.log(`= = =>req: ${util.inspect(req.query)}`);
   const user_id = req.query.user_id;
