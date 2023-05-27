@@ -1,33 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
 .case{
     width: 480px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 300px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: 'Jua', sans-serif;
 }
-.userName{
-    font-size: 24px;
+.backBoard{
+    width: 560px;
+    height: 70%;
+    margin-top: 30%;
+    background-color: #fff;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04);
 }
-.userName span{
+.navBar{
+    padding-left: 4%;
+    padding-right: 2%;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 1px solid #e0e0e0;
+}
+.navBar p{
+    margin-left: 41%;
+    font-weight: 700;
+    color: rgb(52, 58, 64);
+}
+.controllBox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.controllBox button{
+    width: 15px;
+    height: 15px;
+    background-color: rgb(255, 74, 74);
+    border: 0;
+    border-radius: 100%;
+}
+.controllBox button:hover{
+    cursor: pointer;
+    border: 0;
+    border-radius: 100%;
+    background-color: rgb(255, 31, 31);
+}
+.contentBox{
+    width: 92%;
+    height: 94%;
+    margin-top: 2%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+}
+.date{
+    text-align: left;
+    margin-left: 1%;
+    margin-right: 1%;
+    padding-left: 4%;
+    padding-right: 4%;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+}
+.date h1{
+    font-size: 38px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    color: rgb(52, 58, 64);
+}
+.date p{
+    font-weight: 900;
+    font-size: 16px;
+    color: rgb(0, 217, 148);
+    display: inline-block;
+}
+.date span{
+    font-weight: 900;
+    margin-left: 130px;
     font-size: 28px;
-    font-weight: 700;
+    margin-top: 0;
+    color: rgb(104, 104, 104);
 }
-.button{
-    display: block;
-    width: 100%;
-    height: 38px;
-    margin-top: 24px;
-    border-radius: 10px;
-    border: none;
-    font-size: 20px;
-    font-weight: 700;
-    background-color: #99cccc;
-    color: #fff;
-}
-.button:hover{
-    background-color: #92c5c5;
+.time{
+    margin-top: 30px;
+    margin-right: 3%;
+    font-size: 70px;
+    color: rgb(0, 217, 148);
 }
 .linkBox{
     display: flex;
@@ -36,7 +97,7 @@
 }
 #link{
     margin-bottom: 12px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0);
     color: #8aa1a1;
     border: 0;
     text-decoration: none;

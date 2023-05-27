@@ -7,8 +7,8 @@ import FindPw from './FindPw';
 export default function SignIn(){
     const [inputID,setInputID] = useState('');
     const [inputPW,setInputPW] = useState('');
-    const [signup,setSignup] = useState(false);
-    const [findPw,setFindPw] = useState(false);
+    // const [signup,setSignup] = useState(false);
+    // const [findPw,setFindPw] = useState(false);
 
     useEffect(() => {
         if(sessionStorage.getItem('user_Info')){
@@ -53,7 +53,7 @@ export default function SignIn(){
     
     return(
         <div className={styles.main}>
-            <strong className={styles.title}>My objective</strong>
+            <strong className={styles.title}>My TDo</strong>
             <div className={styles.inputBox}>
                 <input className={styles.inputs} id={styles.username} onChange={handleInputId} type="text" name="username" placeholder="아이디"/>
                 <label htmlFor="username">아이디</label>

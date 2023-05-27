@@ -1,0 +1,113 @@
+.addTodo{
+    width: 560px;
+    height: 160px;
+    position: relative;
+    top: -120px;
+    overflow: hidden;
+}
+.inputBox{
+    width: 560px;
+    height: 120px;
+    border-top: 1px solid #e0e0e0;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    position: relative;
+    bottom: 0px;
+    background-color: #f5f5f5;
+    transition: all 1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: slider 0.3s;
+    z-index: 11;
+}
+@keyframes slider{
+    from{
+        transform: translateY(100%);
+    }
+    to{
+        transform: translateY(0);
+    }
+}
+.closed{
+    display: none;
+}
+.inputBox input{
+    width: calc(70% - 60px);
+    height: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 5px;
+    font-size: 20px;
+    border: 1px solid #e0e0e0;
+    position: relative;
+    top: -10px;
+}
+.inputBox input::placeholder{
+    font-size: 20px;
+    text-align: center;
+    color: #999999;
+}
+.opneB{
+    width: 80px;
+    height: 80px;
+    border: 0;
+    border-radius: 100%;
+    position: relative;
+    top: 80px;
+    left: 240px;
+    background-color: rgb(0, 217, 148);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+    z-index: 11;
+}
+.closedB{
+    width: 80px;
+    height: 80px;
+    border: 0;
+    border-radius: 100%;
+    position: relative;
+    top: -40px;
+    left: 240px;
+    background-color: #ff6b6b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(45deg);
+    transition: transform 0.3s;
+    z-index: 11;
+}
+.closedB:hover{
+    cursor: pointer;
+    background-color: #fd7878;
+}
+.closedB div{
+    width: 50px;
+    height: 6px;
+    border-radius: 5px;
+    background-color: white;
+    font-weight: 900;
+    position: absolute;
+}
+.opneB:hover{
+    cursor: pointer;
+    background-color: rgb(56, 217, 169);
+}
+.opneB div{
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: white;
+    font-weight: 900;
+    position: absolute;
+    transition: width 0.3s, height 0.1s;
+}
+#plus2{
+    transform: rotate(90deg);
+}
+.opneB:hover > div{
+    width: 50px;
+    height: 6px;
+}

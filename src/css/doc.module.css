@@ -1,0 +1,79 @@
+.objectList{
+    width: 100%;
+    height: 75%;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    font-size: 28px;
+    color: rgb(52, 58, 64);
+}
+.objectList::-webkit-scrollbar{
+    width: 8px;    
+}
+.objectList::-webkit-scrollbar-thumb{
+    height: 10%;
+    background: rgb(0, 217, 148);
+    border-radius: 10px;
+}
+.object{
+    width: 98%;
+    height: 70px;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-left: 1%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.doc{
+    margin-left: 20px;
+    width: calc(100% - 60px);
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    z-index: 10;
+}
+.clear{
+    color: #CED4DA;
+    position: relative;
+}
+.clear span{
+    position: absolute;
+    top: 14px;
+    left: -5px;
+    width: calc(100% + 20px);
+    border: 1px solid #aeb3b8;
+    animation: dashed 0.5s;
+}
+@keyframes dashed{
+    from{
+        width: 0;
+    }
+    to{
+        width: calc(100% + 20px);
+    }
+}
+.del_Zone{
+    width: 60px;
+    height: 100%;
+}
+.del_Zone:hover .del_B{
+    opacity: 1;
+    background-color: #ff5959;
+    cursor: pointer;
+}
+.del_B{
+    width: 100%;
+    height: 100%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    opacity: 0.1;
+    transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
