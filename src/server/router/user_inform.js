@@ -101,4 +101,27 @@ router.post('/delet', (req, res) => {
     }
   })
 })
+
+router.get('/SingUp', (req, res) => {
+  const id = req.query.id;
+  const pw = req.query.pw;
+  const name = req.query.name;
+  let sql1 = 'INSERT INTO userinfo VALUES (?, ?, ?);'
+  const params = [id,pw,name];
+  db.query(sql1,params,(err) =>{
+    if(!err){
+      console.log("등록되었습니다.");
+    }
+  })
+})
+
+router.post('/checkID', (req, res) =>{
+  const inputId = req.query.input_id;
+  let sql1 = 'SELECT COUNT(*) AS result FROM userinfo WHERE id = ?;'
+  db.query(sql1,inputId,(err,data) =>{
+    if(!err){
+      data[0].result = 0 ? res.send(true) : res.send(false);
+    }
+  })
+})
 module.exports = router;

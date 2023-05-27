@@ -1,14 +1,10 @@
 import { useEffect, useState } from 'react';
 import styles from '../css/SignIn.module.css';
 import axios from 'axios';
-import Signup from './Signup';
-import FindPw from './FindPw';
 
 export default function SignIn(){
     const [inputID,setInputID] = useState('');
     const [inputPW,setInputPW] = useState('');
-    // const [signup,setSignup] = useState(false);
-    // const [findPw,setFindPw] = useState(false);
 
     useEffect(() => {
         if(sessionStorage.getItem('user_Info')){
@@ -44,11 +40,8 @@ export default function SignIn(){
     const enterEvent = (e) =>{
         if(e.key === 'Enter') clickLogin();
     }
-    const findpwOpen = () =>{
-
-    }
     const signupOpen = () =>{
-        
+        document.location.href = '/SingUp';
     }
     
     return(
@@ -64,12 +57,10 @@ export default function SignIn(){
             </div>
                 <button className={styles.submitBtn} onClick={clickLogin} value="로그인">로그인</button>
             <div className={styles.linkBox}>
-                <button id={styles.link} onClick={findpwOpen}>비밀번호 찾기</button>
+                <button id={styles.link} onClick={''}>Howarf's Forge</button>
                 <span id={styles.textPoint}>•</span>
                 <button id={styles.link} onClick={signupOpen}>회원가입</button>
             </div>
-            {/* <Signup/>
-                <FindPw/> */}
         </div>
     )
 }
