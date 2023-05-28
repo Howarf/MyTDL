@@ -7,7 +7,6 @@ export default function SignUp(){
     const [name, setName] = useState('');
     const [pw, setPw] = useState('');
     const [checkPw, setCheckPw] = useState('');
-    const [checkData, setCheckData] = useState(false);
     const handleInputId = (e) =>{
         setId(e.target.value);
     }
@@ -20,21 +19,22 @@ export default function SignUp(){
     const handleInputCheckPW = (e) =>{
         setCheckPw(e.target.value);
     }
-    const checkDatas = () =>{
-        axios.post('/user_inform/checkID', null, {
-            params:{'input_id':id}
-        }).then(res =>{
-            if(res){}
-        })
-    }
     const singUp = () =>{
-        axios.get('/user_inform/SingUp',{
+        axios.post('/user_inform/singup', null, {
             params:{
                 'id': id,
                 'pw': pw,
                 'name': name
             }
-        }).then().catch()
+        }).then(res => {
+            if(res.data.pass){
+                alert(res.data.msg);
+                window.location.href = '/';
+            }
+            else{
+                alert(res.data.msg);
+            }
+        }).catch()
     }
     const goLogin = () =>{
         if(window.confirm('로그인페이지로 돌아가겠습니까?')){
@@ -49,25 +49,23 @@ export default function SignUp(){
                 <label htmlFor="userid">아이디</label>
             </div>
             <div className={styles.inputBox}>
-                <input className={styles.inputs} id={styles.username} onChange={handleInputName} onKeyDown={''} type="text" name="username" placeholder="닉네임"/>
+                <input className={styles.inputs} id={styles.username} onChange={handleInputName} type="text" name="username" placeholder="닉네임"/>
                 <label htmlFor="username">닉네임</label>
             </div>
             <div className={styles.inputBox}>
-                <input className={styles.inputs} id={styles.password} onChange={handleInputPW} onKeyDown={''} type="password" name="password" placeholder="비밀번호"/>
+                <input className={styles.inputs} id={styles.password} onChange={handleInputPW} type="password" name="password" placeholder="비밀번호"/>
                 <label htmlFor="password">비밀번호</label>
             </div>
             <div className={styles.inputBox}>
-                <input className={styles.inputs} id={styles.password} onChange={handleInputCheckPW} onKeyDown={''} type="password" name="password" placeholder="비밀번호 확인"/>
-                <label htmlFor="password">비밀번호 확인</label>
+                <input className={styles.inputs} id={styles.password} onChange={handleInputCheckPW} type="password" name="pwCheck" placeholder="비밀번호 확인"/>
+                <label htmlFor="pwCheck">비밀번호 확인</label>
             </div>
-                <button className={styles.checkData} onClick={''} value="정보 확인">확인</button>
-                <button className={styles.submitBtn} onClick={''} value="회원가입">회원가입</button>
+                <button className={styles.submitBtn} onClick={singUp} value="회원가입">회원가입</button>
             <div className={styles.linkBox}>
+                <button id={styles.link} onClick={goLogin}>돌아가기</button>
                 <span id={styles.textPoint}>•</span>
                 <button id={styles.link} onClick={''}>Howarf's Forge</button>
-                <span id={styles.textPoint}>•</span>
             </div>
-            <div className={styles.backBtu} onClick={goLogin}/>
         </div>
     )
 }

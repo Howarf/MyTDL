@@ -6,7 +6,6 @@ const util = require('util');
 db.connect();
 
 router.get('/userdata', (req, res) => {
-  console.log(`= = =>req: ${util.inspect(req.query)}`);
   const user_id = req.query.user_id;
   const sql1 = 'SELECT name FROM userinfo WHERE id = ?'
   db.query(sql1, user_id, (err, data) => {
@@ -48,7 +47,6 @@ router.post('/login', (req, res) =>{
 })
 
 router.post('/upload', (req, res) => {
-  console.log(`= = =>req: ${util.inspect(req.query)}`);
   const user_id = req.query.user_id;
   const text = req.query.addTodo;
   const params = [user_id, text];
@@ -102,26 +100,37 @@ router.post('/delet', (req, res) => {
   })
 })
 
-router.get('/SingUp', (req, res) => {
+router.post('/singup', (req, res) => {
   const id = req.query.id;
   const pw = req.query.pw;
   const name = req.query.name;
-  let sql1 = 'INSERT INTO userinfo VALUES (?, ?, ?);'
-  const params = [id,pw,name];
-  db.query(sql1,params,(err) =>{
+  let sql1 = 'SELECT COUNT(*) AS result FROM userinfo WHERE id = ?;'
+  let sql2 = 'INSERT INTO userinfo VALUES (?, ?, ?);'
+  const params = [id,name,pw];
+  db.query(sql1,id,(err, data) =>{
     if(!err){
-      console.log("등록되었습니다.");
+      if(data[0].result < 1){
+        db.query(sql2,params,(err) =>{
+          if(!err){
+            res.send({msg:'회원가입이 완료 되었습니다.', pass:true});
+          }
+        })
+      }
+      else{res.send({msg:'중복되는 아이디가 존재합니다.', pass:false});}
     }
   })
 })
 
-router.post('/checkID', (req, res) =>{
-  const inputId = req.query.input_id;
-  let sql1 = 'SELECT COUNT(*) AS result FROM userinfo WHERE id = ?;'
-  db.query(sql1,inputId,(err,data) =>{
+router.get('/datacount', (req, res) => {
+  const user_id = req.query.user_id;
+  const gool = 'false';
+  const params = [user_id, gool];
+  const sql1 = 'SELECT COUNT(*) AS result FROM user_datalist WHERE user_id = ? AND gool = ?'
+  db.query(sql1, params, (err, data) => {
     if(!err){
-      data[0].result = 0 ? res.send(true) : res.send(false);
+      res.send({count: data[0].result});
     }
   })
 })
+
 module.exports = router;

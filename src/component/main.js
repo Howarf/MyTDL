@@ -5,16 +5,18 @@ import Object from './object';
 import { useEffect, useState } from 'react';
 
 export default function Main(){
+    const userInfo = sessionStorage.getItem('user_Info');
     const weeks = ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'];
-    let [userName, setUserName] = useState('');
-    let [day, setDay] = useState('0000년 00월 00일');
-    let [week, setWeek] = useState('');
-    let [time, setTime] = useState();
+    const [userName, setUserName] = useState('');
+    const [day, setDay] = useState('0000년 00월 00일');
+    const [week, setWeek] = useState('');
+    const [time, setTime] = useState();
+    const [count, setCount] = useState(0);
     let toDay = new Date();
     useEffect(() => {
         getData();
         currentTime();
-        Timer();
+        SetData();
     },[])
 
     const currentTime = () => {
@@ -26,18 +28,27 @@ export default function Main(){
         setTime(`${hours}:${minutes}`);
     }
 
-    const Timer = () => {
+    const SetData = () => {
         setInterval(currentTime,2000);
+        setInterval(getCount,1000);
     }
 
     const getData = () => {
-        const userInfo = sessionStorage.getItem('user_Info');
         axios.get('/user_inform/userdata', {
             params: {
                 'user_id': userInfo,
             }
         }).then(res => {
             setUserName(res.data.name);
+        }).catch()
+    }
+    const getCount = () => {
+        axios.get('/user_inform/datacount', {
+            params: {
+                'user_id': userInfo,
+            }
+        }).then(res => {
+            setCount(res.data.count);
         }).catch()
     }
     
@@ -60,7 +71,7 @@ export default function Main(){
                 <div className={styles.date}>
                     <div>
                         <h1>{day}</h1>
-                        <p>남은 일 0개</p>
+                        <p>남은 일 {count}개</p>
                         <span>{week}</span>
                     </div>
                     <div className={styles.time}>{time}</div>
@@ -69,9 +80,9 @@ export default function Main(){
             </div>
             <AddToDo/>
             <div className={styles.linkBox}>
-                <button id={styles.link} onClick={""}>계정관리</button>
                 <span id={styles.textPoint}>•</span>
                 <button id={styles.link}>@Howarf's Forge</button>
+                <span id={styles.textPoint}>•</span>
             </div>
         </div>
     )

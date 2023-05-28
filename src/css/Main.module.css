@@ -92,7 +92,7 @@
 }
 .linkBox{
     display: flex;
-    position: absolute;
+    position: relative;
     bottom: 0px;
 }
 #link{

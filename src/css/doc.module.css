@@ -60,6 +60,7 @@
 .del_Zone{
     width: 60px;
     height: 100%;
+    z-index: 10;
 }
 .del_Zone:hover .del_B{
     opacity: 1;
