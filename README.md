@@ -17,5 +17,10 @@ ToDoList 사이트
 - 완료한 할일 체크하기
 - 남은 할일 개수 표시
 
+## 💻예시 이미지
+![img1](https://github.com/Howarf/MyTDL/blob/master/src/img/page-1.png)
+![img2](https://github.com/Howarf/MyTDL/blob/master/src/img/page-2.png)
+![img3](https://github.com/Howarf/MyTDL/blob/master/src/img/page-3.png)
+
 ## 💻실행하는 법
 - npm run dev
